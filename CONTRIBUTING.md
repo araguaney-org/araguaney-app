@@ -1,6 +1,6 @@
 # Contributing to Araguaney App
 
-Thank you for your interest in contributing. This document describes the conventions and the workflow this repository follows. They mirror the conventions of the [backend repository](https://github.com/araguaney-lat/araguaney) so that the two projects feel like one system.
+Thank you for your interest in contributing. This document describes the conventions and the workflow this repository follows. They mirror the conventions of the [backend repository](https://github.com/araguaney-org/araguaney) so that the two projects feel like one system.
 
 ## Ground rules
 

@@ -26,7 +26,7 @@
 
 | # | Task | Description | Complexity | Status |
 |---|------|-------------|------------|--------|
-| 1 | Public repository | `araguaney-lat/araguaney-app`, protected `main` (PR required, no force push), private vulnerability reporting enabled. | 🟢 Low | ✅ Done |
+| 1 | Public repository | `araguaney-org/araguaney-app` (organization renamed from `araguaney-lat` on 2026-10-02), protected `main` (PR required, no force push), private vulnerability reporting enabled. | 🟢 Low | ✅ Done |
 | 2 | License | GPL-3.0-or-later plus additional permission under GPLv3 §7 for application store distribution (`LICENSE-EXCEPTIONS.md`). | 🟠 Medium | ✅ Done |
 | 3 | Repository documentation | README, CONTRIBUTING (workflow, language conventions, bilingual PRs), SECURITY, CLAUDE.md. All docs in English by policy. | 🟠 Medium | ✅ Done |
 | 4 | Architecture design document | Framework choice with evaluated alternatives, thin-client premise, offline boundary, push isolation, licensing rationale, risks. | 🟠 Medium | ✅ Done |

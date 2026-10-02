@@ -1,7 +1,7 @@
 # API contract snapshot
 
 `openapi.json` is a vendored copy of the OpenAPI specification published by the
-[Araguaney backend](https://github.com/araguaney-lat/araguaney). The Dart client
+[Araguaney backend](https://github.com/araguaney-org/araguaney). The Dart client
 under `lib/core/api/generated/` is produced from this file and from nothing else.
 
 ## Why a snapshot instead of fetching the live specification

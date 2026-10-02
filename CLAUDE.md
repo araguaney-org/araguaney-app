@@ -2,7 +2,7 @@
 
 > Contexto para asistentes de código. Define **qué** es este repositorio y con **qué reglas** se trabaja en él.
 > El diseño detallado vive en `docs/design/`. El backend y sus reglas de dominio viven en
-> [`araguaney-lat/araguaney`](https://github.com/araguaney-lat/araguaney).
+> [`araguaney-org/araguaney`](https://github.com/araguaney-org/araguaney).
 
 ---
 
