@@ -83,7 +83,8 @@ pie title Tasks completed (243 tasks, backlog aside)
 | 30 | [Writing as a national administrator](phase-30-writing-as-national-admin.md) | 8 | 1 | 🟨 89% |
 | 31 | [Speaking more than one language](phase-31-internationalisation.md) | 9 | 1 | 🟨 90% |
 | 32 | [The commentary in English](phase-32-comments-in-english.md) | 6 | 0 | ✅ 100% |
-| **Total** (Phase 10 aside) | | **206** | **37** | **🟢 85%** |
+| 33 | [Moving the client to araguaney.org](phase-33-domain-migration.md) | 0 | 7 | ⬜ 0% |
+| **Total** (Phase 10 aside) | | **206** | **44** | **🟨 82%** |
 
 ## What is missing, and how that is kept honest
 
