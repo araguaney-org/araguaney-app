@@ -1,6 +1,6 @@
 # Araguaney App
 
-Mobile client (Android and iOS, built with Flutter) for [Araguaney](https://github.com/araguaney-lat/araguaney), the open-source platform that coordinates in-kind donation collection centers and prepares humanitarian shipments with standardized boxes, pallets, and exportable manifests.
+Mobile client (Android and iOS, built with Flutter) for [Araguaney](https://github.com/araguaney-org/araguaney), the open-source platform that coordinates in-kind donation collection centers and prepares humanitarian shipments with standardized boxes, pallets, and exportable manifests.
 
 > **Status: pre-development.** This repository currently contains the architecture and design documentation. Application code will follow the roadmap described in `docs/`.
 
@@ -37,7 +37,7 @@ This repository is public and the license permits redistribution under its terms
 
 ## Related repositories
 
-- [`araguaney-lat/araguaney`](https://github.com/araguaney-lat/araguaney) — backend (FastAPI) and web application (Next.js).
+- [`araguaney-org/araguaney`](https://github.com/araguaney-org/araguaney) — backend (FastAPI) and web application (Next.js).
 
 ## License
 

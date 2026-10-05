@@ -11,7 +11,7 @@ Please do not open public issues or pull requests for security problems. We will
 
 ## Scope
 
-This repository contains the mobile client only. Vulnerabilities in the API, the web application, or the server infrastructure belong to the [backend repository](https://github.com/araguaney-lat/araguaney) and should be reported through its security policy; reports sent to either channel will be routed correctly in any case.
+This repository contains the mobile client only. Vulnerabilities in the API, the web application, or the server infrastructure belong to the [backend repository](https://github.com/araguaney-org/araguaney) and should be reported through its security policy; reports sent to either channel will be routed correctly in any case.
 
 Areas of particular interest for this client:
 

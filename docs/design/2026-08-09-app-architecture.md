@@ -7,7 +7,7 @@
 This document records what was decided and why, including the alternatives that were
 evaluated and discarded. The domain rules cited here (the offline boundary, the
 additive API contract, the risk controls) originate in the backend and are documented
-in the [`araguaney-lat/araguaney`](https://github.com/araguaney-lat/araguaney)
+in the [`araguaney-org/araguaney`](https://github.com/araguaney-org/araguaney)
 repository; they are referenced here as constraints this client inherits, not as
 decisions of its own.
 
