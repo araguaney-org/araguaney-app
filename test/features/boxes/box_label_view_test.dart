@@ -19,6 +19,24 @@ void main() {
     expect(BoxLabelView.payloadFor('BX-1').contains('//b/'), isFalse);
   });
 
+  // The test above passes for any base, so it cannot notice a release built
+  // against the old host. When the build defines WEB_BASE_URL (CI does, from
+  // the repository variable), this pins the canonical host. Without the
+  // define it is skipped, because the local default is not the release value.
+  const definedBase = String.fromEnvironment('WEB_BASE_URL');
+  test(
+    'a build with WEB_BASE_URL defined draws the canonical host',
+    () {
+      expect(
+        BoxLabelView.payloadFor('BX-0001'),
+        'https://www.araguaney.org/b/BX-0001',
+      );
+    },
+    skip: definedBase.isEmpty
+        ? 'WEB_BASE_URL not defined for this build'
+        : false,
+  );
+
   testWidgets('the label shows the code and its QR', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
