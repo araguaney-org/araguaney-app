@@ -16,7 +16,7 @@
 | `api.araguaney.org` is live behind Cloudflare with the Galileo rules | The client can move to it. Cloudflare injects the secret header, so the client sends nothing new |
 | `api.araguaney.lat` is still live, "while the native app uses it" | The client must keep working on `.lat` until a release points at `.org` and old binaries are gated out |
 | `araguaney.lat` and `www.araguaney.lat` return 301 to `www.araguaney.org` | Links already printed still resolve, but they are no longer canonical |
-| Box QR codes are built from the first entry of the backend's `FRONTEND_URL` | The QR the phone draws must use that same host, or a label printed from the app and one printed from the panel lead to different URLs |
+| Box QR codes are built from the first entry of the backend's `FRONTEND_URL`, which is `https://www.araguaney.org` (checked 2026-10-05) | The QR the phone draws must use that same host, or a label printed from the app and one printed from the panel lead to different URLs. Until task 1 shipped, they differed |
 
 The backend roadmap's Block E ("native app") lists the same work from the
 server's side. Its task 19 retires `api.araguaney.lat` and depends on this
@@ -45,7 +45,7 @@ phase's task 4.
 
 | # | Task | Description | Complexity | Status |
 |---|---|---|---|---|
-| 1 | Point the QR base at the canonical host | Set the `WEB_BASE_URL` repository variable to `https://www.araguaney.org`. It must change in the same window as the first entry of the backend's `FRONTEND_URL`, never before: a mismatch means two labels for one box lead to different addresses. Both `.lat` and `.org` resolve, so a mismatch is wrong but not broken. | 🟠 Media | ⬜ Pending |
+| 1 | Point the QR base at the canonical host | Set the `WEB_BASE_URL` repository variable to `https://www.araguaney.org`. Done 2026-10-05, after finding the variable still at `.lat` while the backend's `FRONTEND_URL` already led with `.org`. Only builds made from now on draw the new QR; binaries already installed keep `.lat` until they update. Both hosts resolve, so the mismatch was wrong but not broken. | 🟠 Media | ✅ Done |
 | 2 | Pin the QR host by test | `AppConfig.webBaseUrl` is only read from `--dart-define`. Add a unit test that the QR payload is built as `{base}/b/{code}` from that value, so the format the backend also uses is covered on our side. | 🟢 Baja | ⬜ Pending |
 | 3 | Switch the API base URL | Set `API_BASE_URL` to `https://api.araguaney.org` in a release build. Verify on a real device: login, a catalogue read, and an offline intake draining its queue. | 🟠 Media | ⬜ Pending |
 | 4 | Publish the gate target | Once the build from task 3 is downloadable, ask the backend to raise `MIN_SUPPORTED_CLIENT_VERSION` so older binaries are asked to update. Coordinate with the backend's Phase 29 task 18; do not raise it before the binary exists. | 🟢 Baja | ⬜ Pending |
@@ -55,11 +55,11 @@ phase's task 4.
 
 ## Suggested order
 
-1. Task 2 first, so the QR format is pinned before its host changes.
-2. Task 3 with the backend's `FRONTEND_URL` change for task 1, in the same
-   window. Task 1 and task 3 are two lines of configuration, but they must be
-   verified together on a device.
-3. Task 4 only after the new build is out.
+1. Task 1 is done. Task 2 next: pin the QR format by test, so the host is
+   covered by a check and not only by configuration.
+2. Task 3 once task 2 is merged. Its device verification is the only thing
+   left that needs a phone.
+3. Task 4 only after the build from task 3 is out.
 4. Tasks 5 to 7 in any order; they do not block anything.
 
 ## Open question
