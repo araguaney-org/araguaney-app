@@ -32,7 +32,9 @@ void main() {
         'https://www.araguaney.org/b/BX-0001',
       );
     },
-    skip: definedBase.isEmpty ? 'WEB_BASE_URL not defined for this build' : false,
+    skip: definedBase.isEmpty
+        ? 'WEB_BASE_URL not defined for this build'
+        : false,
   );
 
   testWidgets('the label shows the code and its QR', (tester) async {
