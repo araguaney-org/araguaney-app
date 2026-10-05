@@ -46,7 +46,7 @@ phase's task 4.
 | # | Task | Description | Complexity | Status |
 |---|---|---|---|---|
 | 1 | Point the QR base at the canonical host | Set the `WEB_BASE_URL` repository variable to `https://www.araguaney.org`. Done 2026-10-05, after finding the variable still at `.lat` while the backend's `FRONTEND_URL` already led with `.org`. Only builds made from now on draw the new QR; binaries already installed keep `.lat` until they update. Both hosts resolve, so the mismatch was wrong but not broken. | 🟠 Media | ✅ Done |
-| 2 | Pin the QR host by test | `AppConfig.webBaseUrl` is only read from `--dart-define`. Add a unit test that the QR payload is built as `{base}/b/{code}` from that value, so the format the backend also uses is covered on our side. | 🟢 Baja | ⬜ Pending |
+| 2 | Pin the QR host in release builds | The existing test checks the format (`{base}/b/{code}`) but compares against whatever base was configured, so it passes on any host. A new test pins the canonical host when the build defines `WEB_BASE_URL`, and skips otherwise. CI passes the repository variable to that one file, so a release with the old host fails before it is built. Verified red against `https://araguaney.lat` and green against `https://www.araguaney.org`. | 🟢 Baja | ✅ Done |
 | 3 | Switch the API base URL | Set `API_BASE_URL` to `https://api.araguaney.org` in a release build. Verify on a real device: login, a catalogue read, and an offline intake draining its queue. | 🟠 Media | ⬜ Pending |
 | 4 | Publish the gate target | Once the build from task 3 is downloadable, ask the backend to raise `MIN_SUPPORTED_CLIENT_VERSION` so older binaries are asked to update. Coordinate with the backend's Phase 29 task 18; do not raise it before the binary exists. | 🟢 Baja | ⬜ Pending |
 | 5 | Update the repository's public addresses | `SECURITY.md` (`security@araguaney.org`), `docs/release/android.md` (both variables), `docs/release/store-listing.md` (privacy policy and website). Check that the links to the backend repository still point at the right organisation. | 🟢 Baja | ⬜ Pending |
@@ -55,10 +55,8 @@ phase's task 4.
 
 ## Suggested order
 
-1. Task 1 is done. Task 2 next: pin the QR format by test, so the host is
-   covered by a check and not only by configuration.
-2. Task 3 once task 2 is merged. Its device verification is the only thing
-   left that needs a phone.
+1. Tasks 1 and 2 are done. Task 3 next: its device verification is the only
+   thing left in this phase that needs a phone.
 3. Task 4 only after the build from task 3 is out.
 4. Tasks 5 to 7 in any order; they do not block anything.
 

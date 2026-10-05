@@ -50,6 +50,14 @@ jobs:
       - name: Check the foss flavor picks no push service
         run: flutter test --dart-define=APP_FLAVOR=foss test/core/push/push_flavor_test.dart
 
+      # Pins the host the release draws QR codes on, from the same repository
+      # variable the release build reads. Scoped to one file for the reason
+      # above: the defaults in `AppConfig` are meant to be checked without it.
+      - name: Check the release QR host
+        env:
+          WEB_BASE_URL: ${{ vars.WEB_BASE_URL }}
+        run: flutter test --dart-define=WEB_BASE_URL="$WEB_BASE_URL" test/features/boxes/box_label_view_test.dart
+
   api-client:
     name: Generated client matches the contract snapshot
     runs-on: ubuntu-latest
