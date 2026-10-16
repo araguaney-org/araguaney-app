@@ -32,6 +32,8 @@ void main() {
           status: status,
           fromCenterId: 'origin',
           toCenterId: 'dest',
+          fromCenterName: 'Centro Norte',
+          toCenterName: 'Centro Sur',
         ),
       ),
     );
@@ -128,6 +130,13 @@ void main() {
       (rejection.data as Map<String, dynamic>)['reason'],
       'Las cajas ya salieron',
     );
+  });
+
+  testWidgets('the record names both centres', (tester) async {
+    await pumpDetail(tester, status: 'REQUESTED', myCenterId: 'origin');
+
+    expect(find.text('Centro Norte'), findsOneWidget);
+    expect(find.text('Centro Sur'), findsOneWidget);
   });
 
   testWidgets('a closed transfer offers nothing', (tester) async {

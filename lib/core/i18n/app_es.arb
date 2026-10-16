@@ -2795,6 +2795,10 @@
   "@transferNewExplanation": {
     "description": "What a transfer is and who decides, said before anything is filled in."
   },
+  "transferOriginLabel": "Centro de origen",
+  "@transferOriginLabel": {
+    "description": "Which centre the boxes leave from, on a transfer's record."
+  },
   "transferDestinationLabel": "Centro de destino",
   "@transferDestinationLabel": {
     "description": "Which centre the boxes would go to."

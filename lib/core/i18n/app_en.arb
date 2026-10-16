@@ -605,6 +605,7 @@
   "menuSectionAccount": "Your account",
   "transferNewTitle": "Propose a transfer",
   "transferNewExplanation": "Specific boxes move: choose them by scanning them. The other centre decides whether to accept it.",
+  "transferOriginLabel": "Origin centre",
   "transferDestinationLabel": "Destination centre",
   "transferNoDestinations": "There are no other active centres to transfer to.",
   "transferChooseBoxesTitle": "Scan boxes",
