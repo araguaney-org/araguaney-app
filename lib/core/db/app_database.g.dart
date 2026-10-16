@@ -402,12 +402,13 @@ class ProductTypeRow extends DataClass implements Insertable<ProductTypeRow> {
   final bool isControlled;
   final int? minShelfLifeDays;
 
-  /// Decimal del servidor. Se guarda como texto para no perder precisión al
-  /// pasar por un `double`.
+  /// A decimal from the server. Stored as text so no precision is lost passing
+  /// through a `double`.
   final String? unitWeightKg;
   final String? unspscCode;
 
-  /// Campaña que restringe la visibilidad del producto, o nulo si es general.
+  /// The campaign that restricts the product's visibility, or null if it is
+  /// general.
   final String? campaignId;
   final DateTime createdAt;
   const ProductTypeRow({
@@ -1278,8 +1279,8 @@ class BoxRow extends DataClass implements Insertable<BoxRow> {
   final String? batch;
   final DateTime? expiryDate;
 
-  /// Decimal del servidor, guardado como texto por la misma razón que el peso
-  /// unitario del catálogo.
+  /// A decimal from the server, stored as text for the same reason as the
+  /// catalogue's unit weight.
   final String? weightKg;
   final DateTime? sealedAt;
   final String? palletId;
@@ -1865,7 +1866,7 @@ class $SyncMarkersTable extends SyncMarkers
 }
 
 class SyncMarkerRow extends DataClass implements Insertable<SyncMarkerRow> {
-  /// Identificador del recurso: `product_types`, `boxes`.
+  /// The resource's identifier: `product_types`, `boxes`.
   final String resource;
   final DateTime? lastSyncedAt;
   final String? lastFailureCode;
@@ -2345,18 +2346,18 @@ class QueuedCaptureRow extends DataClass
   final String captureId;
   final String userId;
 
-  /// Cuerpo de `POST /v1/intakes` serializado.
+  /// The body of `POST /v1/intakes`, serialised.
   final String payload;
 
-  /// Resumen legible para la pantalla de pendientes, calculado al encolar: no
-  /// hace falta volver a interpretar el payload para decir qué hay dentro.
+  /// A readable summary for the pending screen, worked out when queueing: the
+  /// payload does not have to be read again to say what is inside.
   final String summary;
   final int boxCount;
   final QueuedCaptureStatus status;
   final int attempts;
 
-  /// Código y mensaje del último rechazo, para que la pantalla muestre el
-  /// motivo del servidor tal cual.
+  /// The code and message of the last refusal, so the screen can show the
+  /// server's own reason.
   final String? lastFailureCode;
   final String? lastFailureMessage;
   final DateTime createdAt;
@@ -2895,8 +2896,8 @@ class BoxCodeReservationRow extends DataClass
     implements Insertable<BoxCodeReservationRow> {
   final String code;
 
-  /// Quién lo reservó. La cola es por persona y los códigos también: en un
-  /// dispositivo compartido, dos turnos no pueden repartirse el mismo bloque.
+  /// Who reserved it. The queue is per person and so are the codes: on a
+  /// shared device, two shifts cannot split the same block between them.
   final String userId;
 
   /// Which centre the block was reserved for.
