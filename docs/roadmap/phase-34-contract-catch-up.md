@@ -22,7 +22,7 @@ serves the same document as the `.lat` host.
 | `from_center_name` / `to_center_name` on `TransferOut` and `TransferDetailOut` | Request 3 | Transfers show only the direction, never the other centre |
 | `PalletAddBoxIn` as the body of `POST /v1/pallets/{id}/add-box` | Request 4 | `pallets_repository.dart` writes `{'code': …}` by hand |
 | `role`, `center_role`, `center_id` on `POST /v1/auth/refresh` | Request 7 | `session_controller.dart` asks `GET /v1/auth/me` when `center_role` is missing — which for a national administrator, who has no centre role, is every restore |
-| `status` filter on `GET /v1/reports/campaign/{id}/by-category` | Request 1, reading half | The screen reads «captured in window»; `status=SEALED` reads it as stock |
+| `status` filter on `GET /v1/reports/campaign/{id}/by-category` | Request 1, already closed | Nothing: the stock screen reads sealed boxes from `GET /v1/dashboard/national` since 2026-08-20, and the campaign report means «captured», as its title says |
 | `NOT_CAMPAIGN_MEMBER` from the thread service | Request 6, partly | Already handled by `refusal_copy.dart`; nothing to change. `NOT_THREAD_PARTICIPANT` does not exist yet |
 
 The rest of the difference is outside this phase: product aliases, catalogue
@@ -59,8 +59,8 @@ stays partial on request 12.
 | 3 | Typed `add-box` | Send `PalletAddBoxIn` through the generated client instead of the hand-written map. The test that pinned the key stays: it now checks what the generated model puts on the wire. | 🟢 Low | ✅ Done |
 | 4 | Name the other centre in a transfer | Show `from_center_name` / `to_center_name` on the list and the record, falling back to the direction when the server sends no name. | 🟢 Low | ✅ Done |
 | 5 | Open the capture from a risk review | The notice still lands on the review, which is where the reason is read; each review now opens its capture in one tap. The capture's record asks `GET /v1/intakes/{id}`, which carries the boxes (checked in the backend's `IntakeService.get`), so the «the history does not carry the boxes» note shows only when that question fails. | 🟠 Medium | ✅ Done |
-| 6 | Stock on hand by category | Read the by-category report with `status=SEALED` where the screen means stock, and say so in the title. | 🟢 Low | ⬜ Pending |
-| 7 | Close the requests | Mark requests 1, 2, 3, 4 and 7 resolved in `backend-requests.md` and request 6 partly resolved; update the parity count. | 🟢 Low | ⬜ Pending |
+| 6 | Stock on hand by category | **No change needed.** Request 1 was closed in August without this filter: the stock screen already counts sealed boxes from the national dashboard route, and the campaign report's by-category section is a capture report on purpose. The filter stays available for a screen that wants it. | 🟢 Low | ✅ Done |
+| 7 | Close the requests | Mark requests 2, 3, 4 and 7 resolved in `backend-requests.md` and request 6 partly resolved; update the parity count. | 🟢 Low | ⬜ Pending |
 | 8 | Verify on a device | Restore a session as a national administrator and as a coordinator, follow a risk review notice to its capture, and read a transfer from both centres. | 🟢 Low | ⬜ Pending |
 
 ## Suggested order
