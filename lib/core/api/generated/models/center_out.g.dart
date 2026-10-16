@@ -19,6 +19,7 @@ CenterOut _$CenterOutFromJson(Map<String, dynamic> json) => CenterOut(
   stateName: json['state_name'] as String?,
   legalName: json['legal_name'] as String?,
   taxId: json['tax_id'] as String?,
+  timezone: json['timezone'] as String?,
 );
 
 Map<String, dynamic> _$CenterOutToJson(CenterOut instance) => <String, dynamic>{
@@ -34,4 +35,5 @@ Map<String, dynamic> _$CenterOutToJson(CenterOut instance) => <String, dynamic>{
   'name': instance.name,
   'state_name': instance.stateName,
   'tax_id': instance.taxId,
+  'timezone': instance.timezone,
 };

@@ -19,6 +19,7 @@ class CenterUpdate {
     this.name,
     this.stateName,
     this.taxId,
+    this.timezone,
   });
 
   factory CenterUpdate.fromJson(Map<String, Object?> json) =>
@@ -42,6 +43,7 @@ class CenterUpdate {
   final String? stateName;
   @JsonKey(name: 'tax_id')
   final String? taxId;
+  final String? timezone;
 
   Map<String, Object?> toJson() => _$CenterUpdateToJson(this);
 }

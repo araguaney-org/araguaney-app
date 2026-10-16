@@ -17,6 +17,8 @@ class TransferOut {
     required this.status,
     required this.toCenterId,
     required this.updatedAt,
+    this.fromCenterName,
+    this.toCenterName,
   });
 
   factory TransferOut.fromJson(Map<String, Object?> json) =>
@@ -26,6 +28,8 @@ class TransferOut {
   final DateTime createdAt;
   @JsonKey(name: 'from_center_id')
   final String fromCenterId;
+  @JsonKey(name: 'from_center_name')
+  final String? fromCenterName;
   final String id;
   @JsonKey(name: 'initiated_by')
   final String? initiatedBy;
@@ -33,6 +37,8 @@ class TransferOut {
   final String status;
   @JsonKey(name: 'to_center_id')
   final String toCenterId;
+  @JsonKey(name: 'to_center_name')
+  final String? toCenterName;
   @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
 

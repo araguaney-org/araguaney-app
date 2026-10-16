@@ -18,6 +18,7 @@ class CenterCreate {
     this.legalName,
     this.stateName,
     this.taxId,
+    this.timezone,
   });
 
   factory CenterCreate.fromJson(Map<String, Object?> json) =>
@@ -39,6 +40,7 @@ class CenterCreate {
   final String? stateName;
   @JsonKey(name: 'tax_id')
   final String? taxId;
+  final String? timezone;
 
   Map<String, Object?> toJson() => _$CenterCreateToJson(this);
 }

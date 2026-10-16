@@ -6,6 +6,8 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../models/barcode_result.dart';
+import '../models/product_alias_create.dart';
+import '../models/product_alias_out.dart';
 import '../models/product_gtin_out.dart';
 import '../models/product_type_create.dart';
 import '../models/product_type_out.dart';
@@ -55,6 +57,33 @@ abstract class ProductTypesApi {
   Future<ProductTypeOut> updateProductTypeV1ProductTypesPtIdPatch({
     @Path('pt_id') required String ptId,
     @Body() required ProductTypeUpdate body,
+  });
+
+  /// List Product Aliases.
+  ///
+  /// Otros nombres por los que la gente pide este producto.
+  @GET('/v1/product-types/{pt_id}/aliases')
+  Future<List<ProductAliasOut>> listProductAliasesV1ProductTypesPtIdAliasesGet({
+    @Path('pt_id') required String ptId,
+  });
+
+  /// Add Product Alias.
+  ///
+  /// Agrega un alias. Solo administración nacional: el catálogo es global.
+  @POST('/v1/product-types/{pt_id}/aliases')
+  Future<ProductAliasOut> addProductAliasV1ProductTypesPtIdAliasesPost({
+    @Path('pt_id') required String ptId,
+    @Body() required ProductAliasCreate body,
+  });
+
+  /// Remove Product Alias.
+  ///
+  /// Quita un alias, incluidos los sembrados: uno equivocado arrastra al.
+  /// producto equivocado en cada captura.
+  @DELETE('/v1/product-types/{pt_id}/aliases/{alias_id}')
+  Future<void> removeProductAliasV1ProductTypesPtIdAliasesAliasIdDelete({
+    @Path('pt_id') required String ptId,
+    @Path('alias_id') required String aliasId,
   });
 
   /// List Product Gtins.

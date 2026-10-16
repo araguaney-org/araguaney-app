@@ -8,6 +8,7 @@ import 'package:retrofit/retrofit.dart';
 import '../models/center_create.dart';
 import '../models/center_out.dart';
 import '../models/center_update.dart';
+import '../models/timezone_options.dart';
 
 part 'centers_api.g.dart';
 
@@ -26,6 +27,16 @@ abstract class CentersApi {
   @POST('/v1/centers')
   Future<CenterOut> createCenterV1CentersPost({
     @Body() required CenterCreate body,
+  });
+
+  /// List Timezones.
+  ///
+  /// Zonas IANA de un país (todas, sin país) para el formulario del centro.
+  ///
+  /// Va antes de `/{center_id}`: si no, la ruta la tomaría como un id.
+  @GET('/v1/centers/timezones')
+  Future<TimezoneOptions> listTimezonesV1CentersTimezonesGet({
+    @Query('country_code') String? countryCode,
   });
 
   /// Get Center

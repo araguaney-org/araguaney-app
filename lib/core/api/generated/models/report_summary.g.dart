@@ -18,6 +18,7 @@ ReportSummary _$ReportSummaryFromJson(Map<String, dynamic> json) =>
       totalIntakes: (json['total_intakes'] as num).toInt(),
       totalShipments: (json['total_shipments'] as num).toInt(),
       totalUnits: (json['total_units'] as num).toInt(),
+      timezone: json['timezone'] as String? ?? 'UTC',
     );
 
 Map<String, dynamic> _$ReportSummaryToJson(ReportSummary instance) =>
@@ -28,6 +29,7 @@ Map<String, dynamic> _$ReportSummaryToJson(ReportSummary instance) =>
       'rejection_rate': instance.rejectionRate,
       'sealed_boxes': instance.sealedBoxes,
       'shipped_boxes': instance.shippedBoxes,
+      'timezone': instance.timezone,
       'total_boxes': instance.totalBoxes,
       'total_intakes': instance.totalIntakes,
       'total_shipments': instance.totalShipments,
