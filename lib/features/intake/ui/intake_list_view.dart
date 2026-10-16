@@ -66,8 +66,8 @@ class _IntakeList extends StatelessWidget {
       // `GET /v1/intakes` does not bring the boxes: the schema declares them
       // with an empty list by default and the server does not fill them in when
       // listing. Counting that list gave «0 cajas» on every row, which is not a
-      // missing figure but a false one. Until request 2 exists nothing is
-      // counted.
+      // missing figure but a false one. The row leaves the count out; the
+      // record asks for the capture by id, which does carry them.
       final parts = [
         if (boxes > 0) context.l10n.boxCount(boxes),
         ?donorLabel(intake),

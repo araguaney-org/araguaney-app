@@ -42,8 +42,8 @@ divides by.
 
 ```mermaid
 pie title Tasks completed (258 tasks, backlog aside)
-    "Done" : 214
-    "Pending" : 40
+    "Done" : 215
+    "Pending" : 39
     "Partial" : 3
     "Blocked or external" : 1
 ```
@@ -84,8 +84,8 @@ pie title Tasks completed (258 tasks, backlog aside)
 | 31 | [Speaking more than one language](phase-31-internationalisation.md) | 9 | 1 | 🟨 90% |
 | 32 | [The commentary in English](phase-32-comments-in-english.md) | 6 | 0 | ✅ 100% |
 | 33 | [Moving the client to araguaney.org](phase-33-domain-migration.md) | 2 | 5 | 🟨 29% |
-| 34 | [Catching up with the contract](phase-34-contract-catch-up.md) | 6 | 2 | 🟨 75% |
-| **Total** (Phase 10 aside) | | **214** | **44** | **🟨 83%** |
+| 34 | [Catching up with the contract](phase-34-contract-catch-up.md) | 7 | 1 | 🟨 88% |
+| **Total** (Phase 10 aside) | | **215** | **43** | **🟨 83%** |
 
 ## What is missing, and how that is kept honest
 
