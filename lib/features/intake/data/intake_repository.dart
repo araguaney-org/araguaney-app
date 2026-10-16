@@ -64,4 +64,8 @@ class IntakeRepository {
 
   Future<List<IntakeOut>> list({int limit = 50, int offset = 0}) =>
       _api.listIntakesV1IntakesGet(limit: limit, offset: offset);
+
+  /// One capture with its boxes, which the listing leaves out.
+  Future<IntakeOut> get(String intakeId) =>
+      _api.getIntakeV1IntakesIntakeIdGet(intakeId: intakeId);
 }

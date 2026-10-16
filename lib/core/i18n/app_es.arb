@@ -764,6 +764,10 @@
   "@notesLabel": {
     "description": "Screen: intake_detail_view."
   },
+  "reviewOpenCaptureAction": "Ver la captura",
+  "@reviewOpenCaptureAction": {
+    "description": "Opens the capture a risk review is about."
+  },
   "captureBoxesNotInHistory": "El historial no trae las cajas de esta captura. Búscalas por su código en Cajas.",
   "@captureBoxesNotInHistory": {
     "description": "Screen: intake_detail_view."

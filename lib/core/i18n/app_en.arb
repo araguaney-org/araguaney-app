@@ -191,6 +191,7 @@
   "companyTermsNotice": "Anybody donating on behalf of a company has to accept them.",
   "donorLabel": "Donor",
   "notesLabel": "Notes",
+  "reviewOpenCaptureAction": "Open the capture",
   "captureBoxesNotInHistory": "The history does not carry this capture's boxes. Look for them by code under Boxes.",
   "notesOptionalLabel": "Notes (optional)",
   "intakeFormTitle": "Register an intake",

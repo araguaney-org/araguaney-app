@@ -7,6 +7,7 @@ import '../../../core/auth/auth_providers.dart';
 import '../../../core/i18n/l10n_extension.dart';
 import '../../../core/ui/record_field.dart';
 import '../../../core/ui/status_labels.dart';
+import '../../intake/ui/intake_detail_view.dart';
 import '../data/risk_reviews_providers.dart';
 import '../data/risk_reviews_repository.dart';
 import 'resolve_review_sheet.dart';
@@ -220,6 +221,17 @@ class _ReviewCard extends StatelessWidget {
                 style: theme.textTheme.bodySmall,
               ),
             ],
+            if (review.intakeId case final intakeId?)
+              Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: TextButton(
+                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                  onPressed: () => Navigator.of(
+                    context,
+                  ).push(IntakeDetailView.routeById(intakeId)),
+                  child: Text(context.l10n.reviewOpenCaptureAction),
+                ),
+              ),
             if (onResolve case final onResolve?) ...[
               const SizedBox(height: 14),
               SizedBox(
@@ -253,6 +265,12 @@ class _SettledRow extends StatelessWidget {
       [formatShortDate(review.createdAt), ?review.reviewNote].join(' · '),
     ),
     trailing: Chip(label: Text(reviewStatusLabel(context.l10n, review.status))),
+    onTap: switch (review.intakeId) {
+      final intakeId? => () => Navigator.of(
+        context,
+      ).push(IntakeDetailView.routeById(intakeId)),
+      null => null,
+    },
   );
 }
 

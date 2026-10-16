@@ -83,6 +83,9 @@ void main() {
         if (options.path.endsWith('/resolve')) {
           return FakeResponse(200, riskReviewJson());
         }
+        if (options.path.startsWith('/v1/intakes/')) {
+          return FakeResponse(200, intakeJson());
+        }
         return FakeResponse(
           200,
           reviews ??
@@ -155,6 +158,18 @@ void main() {
 
       expect(find.widgetWithText(OutlinedButton, 'Rechazar'), findsOneWidget);
       expect(find.widgetWithText(FilledButton, 'Aprobar'), findsOneWidget);
+    });
+
+    testWidgets('a review opens the capture it is about', (tester) async {
+      // The notice lands here because the reason is here; the capture is one
+      // tap away rather than a search through the history.
+      final adapter = await pumpReviews(tester, canResolve: false);
+
+      await tester.tap(find.text('Ver la captura'));
+      await tester.pumpAndSettle();
+
+      expect(adapter.requests.last.path, startsWith('/v1/intakes/'));
+      expect(find.text('BX-0001'), findsOneWidget);
     });
 
     testWidgets('a volunteer reads the reason but cannot close it', (

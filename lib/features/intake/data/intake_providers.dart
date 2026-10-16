@@ -103,6 +103,12 @@ final intakesProvider = FutureProvider<List<IntakeOut>>((ref) async {
       .toList(growable: false);
 });
 
+/// One capture as the server keeps it, boxes included.
+final intakeDetailProvider = FutureProvider.autoDispose
+    .family<IntakeOut, String>(
+      (ref, intakeId) => ref.watch(intakeRepositoryProvider).get(intakeId),
+    );
+
 /// The owner of the capture form.
 ///
 /// It is discarded when the screen closes, and with it the idempotency key: the
