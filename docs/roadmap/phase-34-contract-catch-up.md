@@ -55,7 +55,7 @@ stays partial on request 12.
 | # | Task | Description | Complexity | Status |
 |---|---|---|---|---|
 | 1 | Refresh the snapshot | Fetch from the deployed API, store it sorted, regenerate the client, in its own commit as `api/README.md` describes. | 🟢 Low | ✅ Done |
-| 2 | Identity from the refresh response | Ask `GET /v1/auth/me` only when the token carries no `role`, not when it carries no `center_role`. Keep the fallback: a server that answers without identity is still handled, and the session still opens with less rather than more. | 🟢 Low | ⬜ Pending |
+| 2 | Identity from the refresh response | Ask `GET /v1/auth/me` only when the token carries no `role`, not when it carries no `center_role`. Keep the fallback: a server that answers without identity is still handled, and the session still opens with less rather than more. | 🟢 Low | ✅ Done |
 | 3 | Typed `add-box` | Send `PalletAddBoxIn` through the generated client instead of the hand-written map. The test that pinned the key stays: it now checks what the generated model puts on the wire. | 🟢 Low | ✅ Done |
 | 4 | Name the other centre in a transfer | Show `from_center_name` / `to_center_name` on the list and the record, falling back to the direction when the server sends no name. | 🟢 Low | ⬜ Pending |
 | 5 | Open the capture from a risk review | The notice and the review open the capture through `GET /v1/intakes/{id}`. Check whether the detail carries the boxes before removing the «the history does not carry the boxes» note from the record. | 🟠 Medium | ⬜ Pending |

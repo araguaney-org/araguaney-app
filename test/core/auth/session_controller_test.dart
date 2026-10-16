@@ -73,12 +73,12 @@ void main() {
     test(
       'a restored session keeps the role the token does not carry',
       () async {
-        // `POST /v1/auth/refresh` returns the tokens only. Without asking who
-        // it is, whoever coordinates a centre reappeared as a volunteer at
-        // every restart: without their actions and without their role, until
+        // A server that renews with the tokens only. Without asking who it
+        // is, whoever coordinates a centre reappeared as a volunteer at every
+        // restart: without their actions and without their role, until
         // signing in again.
         final repository = FakeAuthRepository(
-          refreshToken: buildToken(centerRole: null),
+          refreshToken: buildToken(role: null, centerRole: null),
         )..meCenterRole = 'coordinator';
         final built = _build(
           repository: repository,
@@ -96,7 +96,7 @@ void main() {
       // Offering too little is the safe direction: the server goes on deciding
       // on every call, and an action that is not offered breaks nothing.
       final repository = FakeAuthRepository(
-        refreshToken: buildToken(centerRole: null),
+        refreshToken: buildToken(role: null, centerRole: null),
       )..meError = unauthorized;
       final built = _build(
         repository: repository,
@@ -107,6 +107,25 @@ void main() {
 
       final state = built.container.read(sessionControllerProvider);
       expect(state, isA<SessionActive>());
+      expect((state as SessionActive).session.centerRole, isNull);
+    });
+
+    test('a national administrator is not asked who they are', () async {
+      // They have no centre role, so a token that carries everything the
+      // server knows still has `center_role` empty. Only a missing `role`
+      // means the renewal did not say who this is.
+      final repository = FakeAuthRepository(
+        refreshToken: buildToken(role: 'national_admin', centerRole: null),
+      );
+      final built = _build(
+        repository: repository,
+        storage: FakeTokenStorage(stored: 'refresh-stored'),
+      );
+
+      await built.controller.restoration;
+
+      expect(repository.meCount, 0);
+      final state = built.container.read(sessionControllerProvider);
       expect((state as SessionActive).session.centerRole, isNull);
     });
 

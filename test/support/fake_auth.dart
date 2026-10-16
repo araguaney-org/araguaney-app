@@ -146,12 +146,13 @@ Token buildToken({
   String? refresh = 'refresh-1',
   bool mustChangePassword = false,
   String? centerRole = 'volunteer',
+  String? role = 'user',
 }) => Token(
   accessToken: access,
   refreshToken: refresh,
   mustChangePassword: mustChangePassword,
   centerRole: centerRole,
-  role: 'user',
+  role: role,
 );
 
 const unauthorized = UnauthorizedFailure(
