@@ -10,10 +10,20 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../support/fixtures.dart';
 
 void main() {
-  Future<void> pumpList(WidgetTester tester, List<IntakeOut> intakes) async {
+  Future<void> pumpList(
+    WidgetTester tester,
+    List<IntakeOut> intakes, {
+    Future<IntakeOut> Function()? detail,
+  }) async {
     await tester.pumpWidget(
       ProviderScope(
-        overrides: [intakesProvider.overrideWith((ref) async => intakes)],
+        overrides: [
+          intakesProvider.overrideWith((ref) async => intakes),
+          intakeDetailProvider.overrideWith(
+            (ref, id) =>
+                detail?.call() ?? Future.error(StateError('no detail')),
+          ),
+        ],
         child: const MaterialApp(
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
@@ -36,9 +46,23 @@ void main() {
     expect(find.text('0 cajas'), findsNothing);
   });
 
-  testWidgets('the record says the history does not carry the boxes', (
+  testWidgets('the record asks for its boxes, which the listing leaves out', (
     tester,
   ) async {
+    await pumpList(tester, [
+      listed(),
+    ], detail: () async => IntakeOut.fromJson(intakeJson()));
+
+    await tester.tap(find.byType(ListTile).first);
+    await tester.pumpAndSettle();
+
+    expect(find.text('BX-0001'), findsOneWidget);
+    expect(find.textContaining('El historial no trae las cajas'), findsNothing);
+  });
+
+  testWidgets('when that question fails, the record says so', (tester) async {
+    // Without signal the listing's copy is all there is, and an empty section
+    // would read as «this capture had no boxes».
     await pumpList(tester, [listed()]);
 
     await tester.tap(find.byType(ListTile).first);

@@ -113,11 +113,32 @@ void main() {
     expect(find.text('REQUESTED'), findsNothing);
   });
 
-  testWidgets('the other centre is not named, because it cannot be known', (
+  testWidgets('the other centre is named when the server names it', (
     tester,
   ) async {
-    // The contract sends identifiers and the centre endpoints require national
-    // administration. Showing an identifier would be worse than nothing.
+    // A coordination cannot list centres, so the name has to travel with the
+    // transfer. Only the other one is named; this centre is the reader's own.
+    await pumpList(
+      tester,
+      transfers: [
+        transferJson(
+          id: 't-1',
+          fromCenterId: 'mine',
+          toCenterId: 'other',
+          fromCenterName: 'Centro Norte',
+          toCenterName: 'Centro Sur',
+        ),
+      ],
+    );
+
+    expect(find.textContaining('Centro Sur'), findsOneWidget);
+    expect(find.textContaining('Centro Norte'), findsNothing);
+  });
+
+  testWidgets('without a name from the server the identifier stays hidden', (
+    tester,
+  ) async {
+    // Showing an identifier would be worse than nothing.
     await pumpList(
       tester,
       transfers: [

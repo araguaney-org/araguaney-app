@@ -205,12 +205,14 @@ class SessionController extends Notifier<SessionState> {
         ? await _adoptIdentity(token.accessToken)
         : await _storage.readUserId();
 
-    // A token with no role comes from a renewal, and a renewal does not say
-    // who anybody is: it has to be asked. If it cannot be — no signal, server
-    // down — the session opens anyway without a role, which is the safe
-    // direction: it offers less, never more, and the server still decides on
-    // every call.
-    final identity = token.centerRole == null
+    // A renewal carries the same identity as a login. A token with no `role`
+    // at all comes from a server that does not send it, and then it has to be
+    // asked. The centre role is not the signal: a national administrator has
+    // none, and asking for it would cost every one of their restores a
+    // request. If the question cannot be answered — no signal, server down —
+    // the session opens anyway without a role, which is the safe direction:
+    // it offers less, never more, and the server still decides on every call.
+    final identity = token.role == null
         ? await _identity(token.accessToken)
         : null;
 

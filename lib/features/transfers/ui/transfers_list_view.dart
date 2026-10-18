@@ -212,19 +212,19 @@ class _TransferRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // The other centre is named **only if this session can resolve it**. For a
-    // coordination the map comes back empty and the row stays exactly as it
-    // was: the direction and the date, with no name and no gap. Showing an
-    // identifier would be worse than showing nothing, and that is why request 3
-    // — the names in the transfer's contract — is still the real fix for
-    // whoever cannot list them.
+    // The other centre is named by the transfer itself, which is the only way
+    // a coordination — who cannot list centres — learns it. The centre list
+    // is the fallback for a server that sends no name. With neither, the row
+    // keeps the direction and the date: showing an identifier would be worse
+    // than showing nothing.
     final names = ref.watch(centerNamesProvider);
-    final otherId = switch (direction) {
-      TransferDirection.incoming => transfer.fromCenterId,
-      TransferDirection.outgoing => transfer.toCenterId,
+    final other = switch (direction) {
+      TransferDirection.incoming =>
+        transfer.fromCenterName ?? names[transfer.fromCenterId],
+      TransferDirection.outgoing =>
+        transfer.toCenterName ?? names[transfer.toCenterId],
       TransferDirection.other => null,
     };
-    final other = otherId == null ? null : names[otherId];
     final date = formatShortDate(transfer.createdAt);
 
     return ListTile(

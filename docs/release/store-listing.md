@@ -80,7 +80,7 @@ PARA QUIÉN
 
 Para el voluntariado y la coordinación de un centro de acopio con cuenta en la
 plataforma. No es una aplicación para donar: si quieres donar, entra en
-araguaney.lat.
+araguaney.org.
 
 Cada persona ve lo que su rol permite, y quien coordina un centro ve además lo
 que exige una decisión suya.
@@ -191,7 +191,7 @@ belongs to the backend rather than to this listing.
 Play asks for these before it will publish to any track beyond internal, and
 they are decisions rather than text:
 
-- **Privacy policy**: `https://araguaney.lat/aviso-de-privacidad`, already
+- **Privacy policy**: `https://www.araguaney.org/aviso-de-privacidad`, already
   served by the web.
 - **Data safety**: the application handles account data and donor names typed
   by an operator. It does not collect location, contacts or advertising

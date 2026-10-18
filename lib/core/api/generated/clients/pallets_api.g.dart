@@ -148,12 +148,13 @@ class _PalletsApi implements PalletsApi {
   @override
   Future<PalletDetailOut> addBoxToPalletV1PalletsPalletIdAddBoxPost({
     required String palletId,
-    required dynamic body,
+    required PalletAddBoxIn body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<PalletDetailOut>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

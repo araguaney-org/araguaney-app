@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../models/export_job_out.dart';
+import '../models/pallet_add_box_in.dart';
 import '../models/pallet_close_in.dart';
 import '../models/pallet_create.dart';
 import '../models/pallet_detail_out.dart';
@@ -49,7 +50,7 @@ abstract class PalletsApi {
   @POST('/v1/pallets/{pallet_id}/add-box')
   Future<PalletDetailOut> addBoxToPalletV1PalletsPalletIdAddBoxPost({
     @Path('pallet_id') required String palletId,
-    @Body() required dynamic body,
+    @Body() required PalletAddBoxIn body,
   });
 
   /// Remove Box From Pallet

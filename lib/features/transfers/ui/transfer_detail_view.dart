@@ -212,6 +212,13 @@ class _Fields extends StatelessWidget {
             TransferDirection.other => context.l10n.transferDirectionOther,
           },
         ),
+        if (transfer.fromCenterName case final origin?)
+          RecordField(label: context.l10n.transferOriginLabel, value: origin),
+        if (transfer.toCenterName case final destination?)
+          RecordField(
+            label: context.l10n.transferDestinationLabel,
+            value: destination,
+          ),
         RecordField(
           label: context.l10n.boxesTitle,
           value: '${transfer.boxes.length}',

@@ -1,6 +1,7 @@
 import '../../../core/api/api_error_mapper.dart';
 import '../../../core/api/api_failure.dart';
 import '../../../core/api/generated/clients/pallets_api.dart';
+import '../../../core/api/generated/models/pallet_add_box_in.dart';
 import '../../../core/api/generated/models/pallet_close_in.dart';
 import '../../../core/api/generated/models/pallet_create.dart';
 import '../../../core/api/generated/models/pallet_detail_out.dart';
@@ -63,16 +64,13 @@ class PalletsRepository {
   );
 
   /// Adds a box by its code.
-  ///
-  /// The contract declares the body untyped, so the key travels written by
-  /// hand; it is `code`, checked against the backend's router and not assumed.
   Future<PalletOutcome<PalletDetailOut>> addBox({
     required String palletId,
     required String boxCode,
   }) => _guard(
     () => _pallets.addBoxToPalletV1PalletsPalletIdAddBoxPost(
       palletId: palletId,
-      body: {'code': boxCode},
+      body: PalletAddBoxIn(code: boxCode),
     ),
   );
 

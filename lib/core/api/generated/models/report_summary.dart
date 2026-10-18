@@ -19,6 +19,7 @@ class ReportSummary {
     required this.totalIntakes,
     required this.totalShipments,
     required this.totalUnits,
+    this.timezone = 'UTC',
   });
 
   factory ReportSummary.fromJson(Map<String, Object?> json) =>
@@ -36,6 +37,7 @@ class ReportSummary {
   final int sealedBoxes;
   @JsonKey(name: 'shipped_boxes')
   final int shippedBoxes;
+  final String timezone;
   @JsonKey(name: 'total_boxes')
   final int totalBoxes;
   @JsonKey(name: 'total_intakes')

@@ -63,11 +63,13 @@ class _ReportsApi implements ReportsApi {
     required String campaignId,
     DateTime? start,
     DateTime? end,
+    String? status,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'start': start?.toIso8601String(),
       r'end': end?.toIso8601String(),
+      r'status': status,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

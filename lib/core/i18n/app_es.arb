@@ -764,6 +764,10 @@
   "@notesLabel": {
     "description": "Screen: intake_detail_view."
   },
+  "reviewOpenCaptureAction": "Ver la captura",
+  "@reviewOpenCaptureAction": {
+    "description": "Opens the capture a risk review is about."
+  },
   "captureBoxesNotInHistory": "El historial no trae las cajas de esta captura. Búscalas por su código en Cajas.",
   "@captureBoxesNotInHistory": {
     "description": "Screen: intake_detail_view."
@@ -2794,6 +2798,10 @@
   "transferNewExplanation": "Se mueven cajas concretas: elígelas escaneándolas. El otro centro decide si la acepta.",
   "@transferNewExplanation": {
     "description": "What a transfer is and who decides, said before anything is filled in."
+  },
+  "transferOriginLabel": "Centro de origen",
+  "@transferOriginLabel": {
+    "description": "Which centre the boxes leave from, on a transfer's record."
   },
   "transferDestinationLabel": "Centro de destino",
   "@transferDestinationLabel": {

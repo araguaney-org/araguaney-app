@@ -51,6 +51,11 @@ of those routes belong to the donor-facing web and should never be called from
 here — but it is the number that made the gap visible, and it belongs in a file
 rather than in somebody's memory.
 
+**On 2026-10-16, after [Phase 34](phase-34-contract-catch-up.md) refreshed the
+snapshot: 168 generated, 122 used, 46 unused.** The phases since August spent
+most of what was left; the seven routes the refresh added are counted, and
+those this application does not want yet sit among the 46.
+
 ## The panel, module by module
 
 Roles are the panel's own, from `nav-config.ts`.

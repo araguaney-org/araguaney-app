@@ -1,8 +1,8 @@
 # What the mobile client needs from the backend
 
-Eight things this application cannot do because the `/v1` contract does not
-offer them — three of which are now resolved and kept here for what they cost
-while they were open. Each was found while building a phase, and each is written
+Thirteen things this application could not do because the `/v1` contract did
+not offer them — seven of which are now resolved, one partly, and all kept here
+for what they cost while they were open. Each was found while building a phase, and each is written
 here with what it blocks and what the application does instead in the meantime —
 so that whoever picks one up can judge whether it is worth doing, not just what
 to do.
@@ -36,7 +36,12 @@ caller misleads every smaller one**, and **an exclusion hides what it excludes,
 including the answer to a question asked later**. The route-by-route review that
 found it is now a habit recorded in Phase 01.
 
-## 2. `GET /v1/intakes/{id}`
+## 2. `GET /v1/intakes/{id}` — **resolved**
+
+**Delivered on 2026-09-03** by the backend's PR #299 and adopted here — the record of a capture now asks for it, and a risk review opens it — in
+[Phase 34](roadmap/phase-34-contract-catch-up.md) on 2026-10-16. The gap
+between those two dates is the lesson: nothing tells this repository that a
+request was answered, so the snapshot went six weeks without a refresh.
 
 **Blocks:** the natural destination of a `risk_review` notification.
 
@@ -70,7 +75,12 @@ changes closes it — a by-id route that loads them, or a box count on the listi
 
 ---
 
-## 3. Center names on `TransferOut`
+## 3. Center names on `TransferOut` — **resolved**
+
+**Delivered on 2026-09-03** by the backend's PR #299 and adopted here in
+[Phase 34](roadmap/phase-34-contract-catch-up.md) on 2026-10-16. The gap
+between those two dates is the lesson: nothing tells this repository that a
+request was answered, so the snapshot went six weeks without a refresh.
 
 **Blocks:** naming the other center in a transfer.
 
@@ -89,7 +99,12 @@ list centers.
 
 ---
 
-## 4. A typed body for `POST /v1/pallets/{id}/add-box`
+## 4. A typed body for `POST /v1/pallets/{id}/add-box` — **resolved**
+
+**Delivered on 2026-09-03** by the backend's PR #299 and adopted here in
+[Phase 34](roadmap/phase-34-contract-catch-up.md) on 2026-10-16. The gap
+between those two dates is the lesson: nothing tells this repository that a
+request was answered, so the snapshot went six weeks without a refresh.
 
 **Blocks:** nothing. It is a small correctness improvement.
 
@@ -129,7 +144,12 @@ This repository now excludes `qr` instead, and `DashboardApi` is generated with
 /v1/dashboard/national/summary` still generates as `dynamic`, which is harmless:
 it requires national administration and this application does not call it.
 
-## 6. Named codes and Spanish messages for refusals an operator reads
+## 6. Named codes and Spanish messages for refusals an operator reads — **partly resolved**
+
+**On 2026-09-03** the thread service started answering `NOT_CAMPAIGN_MEMBER`
+instead of `FORBIDDEN`, and `refusal_copy.dart` already names that code, so a
+non-member opening a campaign thread now reads why. `NOT_THREAD_PARTICIPANT`
+does not exist yet; that is what remains open.
 
 **Blocks:** nothing today. It removes copy the client should not be holding, and
 unblocks one refusal the client cannot improve on its own.
@@ -187,7 +207,12 @@ quoting them is still better than paraphrasing.
 
 ---
 
-## 7. Identity fields on `POST /v1/auth/refresh`
+## 7. Identity fields on `POST /v1/auth/refresh` — **resolved**
+
+**Delivered on 2026-09-03** by the backend's PR #299 and adopted here — `GET /v1/auth/me` is now asked only when a renewal carries no `role` — in
+[Phase 34](roadmap/phase-34-contract-catch-up.md) on 2026-10-16. The gap
+between those two dates is the lesson: nothing tells this repository that a
+request was answered, so the snapshot went six weeks without a refresh.
 
 **Blocks:** nothing now — the client works around it with an extra request.
 

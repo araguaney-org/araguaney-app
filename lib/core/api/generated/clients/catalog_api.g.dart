@@ -49,6 +49,28 @@ class _CatalogApi implements CatalogApi {
   }
 
   @override
+  Future<void> recordMappingChoiceV1CatalogMappingChoicesPost({
+    required CatalogMappingChoiceIn body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1/catalog/mapping-choices',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
   Future<List<RxNormSuggestion>> rxnormSearchV1CatalogRxnormGet({
     required String q,
   }) async {

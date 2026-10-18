@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../models/barcode_result.dart';
+import '../models/catalog_mapping_choice_in.dart';
 import '../models/product_type_out.dart';
 import '../models/rx_norm_suggestion.dart';
 
@@ -21,6 +22,17 @@ abstract class CatalogApi {
   @GET('/v1/catalog/barcode/{gtin}')
   Future<BarcodeResult> barcodeLookupV1CatalogBarcodeGtinGet({
     @Path('gtin') required String gtin,
+  });
+
+  /// Record Mapping Choice.
+  ///
+  /// El panel llama esto cuando alguien resuelve una sugerencia de mapeo de.
+  /// texto libre — la aceptó, la cambió, o buscó/creó el producto por su.
+  /// cuenta. Es la única forma de que exista un conjunto de evaluación con.
+  /// datos reales (Fase 23, task 8) en vez de casos escritos a mano.
+  @POST('/v1/catalog/mapping-choices')
+  Future<void> recordMappingChoiceV1CatalogMappingChoicesPost({
+    @Body() required CatalogMappingChoiceIn body,
   });
 
   /// Rxnorm Search.

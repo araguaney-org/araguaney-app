@@ -17,6 +17,7 @@ CenterUpdate _$CenterUpdateFromJson(Map<String, dynamic> json) => CenterUpdate(
   name: json['name'] as String?,
   stateName: json['state_name'] as String?,
   taxId: json['tax_id'] as String?,
+  timezone: json['timezone'] as String?,
 );
 
 Map<String, dynamic> _$CenterUpdateToJson(CenterUpdate instance) =>
@@ -31,4 +32,5 @@ Map<String, dynamic> _$CenterUpdateToJson(CenterUpdate instance) =>
       'name': instance.name,
       'state_name': instance.stateName,
       'tax_id': instance.taxId,
+      'timezone': instance.timezone,
     };

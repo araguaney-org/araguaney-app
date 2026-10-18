@@ -17,16 +17,20 @@ TransferOut _$TransferOutFromJson(Map<String, dynamic> json) => TransferOut(
   updatedAt: json['updated_at'] == null
       ? null
       : DateTime.parse(json['updated_at'] as String),
+  fromCenterName: json['from_center_name'] as String?,
+  toCenterName: json['to_center_name'] as String?,
 );
 
 Map<String, dynamic> _$TransferOutToJson(TransferOut instance) =>
     <String, dynamic>{
       'created_at': instance.createdAt.toIso8601String(),
       'from_center_id': instance.fromCenterId,
+      'from_center_name': instance.fromCenterName,
       'id': instance.id,
       'initiated_by': instance.initiatedBy,
       'notes': instance.notes,
       'status': instance.status,
       'to_center_id': instance.toCenterId,
+      'to_center_name': instance.toCenterName,
       'updated_at': instance.updatedAt?.toIso8601String(),
     };

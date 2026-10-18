@@ -16,6 +16,7 @@ CenterCreate _$CenterCreateFromJson(Map<String, dynamic> json) => CenterCreate(
   legalName: json['legal_name'] as String?,
   stateName: json['state_name'] as String?,
   taxId: json['tax_id'] as String?,
+  timezone: json['timezone'] as String?,
 );
 
 Map<String, dynamic> _$CenterCreateToJson(CenterCreate instance) =>
@@ -29,4 +30,5 @@ Map<String, dynamic> _$CenterCreateToJson(CenterCreate instance) =>
       'name': instance.name,
       'state_name': instance.stateName,
       'tax_id': instance.taxId,
+      'timezone': instance.timezone,
     };

@@ -5,7 +5,7 @@
 If you find a vulnerability, report it privately:
 
 - **GitHub**: use [private vulnerability reporting](../../security/advisories/new) (*Security* tab → *Report a vulnerability*). This is the preferred channel.
-- **Email**: security@araguaney.lat, subject `[SECURITY] araguaney-app`.
+- **Email**: security@araguaney.org, subject `[SECURITY] araguaney-app`.
 
 Please do not open public issues or pull requests for security problems. We will acknowledge reports as quickly as we can and keep you informed of the resolution.
 

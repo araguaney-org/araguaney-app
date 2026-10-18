@@ -21,6 +21,7 @@ class CenterOut {
     required this.stateName,
     this.legalName,
     this.taxId,
+    this.timezone,
   });
 
   factory CenterOut.fromJson(Map<String, Object?> json) =>
@@ -47,6 +48,7 @@ class CenterOut {
   final String? stateName;
   @JsonKey(name: 'tax_id')
   final String? taxId;
+  final String? timezone;
 
   Map<String, Object?> toJson() => _$CenterOutToJson(this);
 }

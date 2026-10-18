@@ -35,6 +35,7 @@ abstract class ReportsApi {
     @Path('campaign_id') required String campaignId,
     @Query('start') DateTime? start,
     @Query('end') DateTime? end,
+    @Query('status') String? status,
   });
 
   /// Get By Center

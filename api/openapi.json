@@ -524,6 +524,20 @@
         "title": "Body_login_v1_auth_login_post",
         "type": "object"
       },
+      "Body_read_label_v1_intakes_read_label_post": {
+        "properties": {
+          "file": {
+            "contentMediaType": "application/octet-stream",
+            "title": "File",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file"
+        ],
+        "title": "Body_read_label_v1_intakes_read_label_post",
+        "type": "object"
+      },
       "Body_upload_my_avatar_v1_auth_me_avatar_post": {
         "properties": {
           "file": {
@@ -656,7 +670,6 @@
                 "type": "number"
               },
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -1021,7 +1034,6 @@
           "weight_goal_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -1156,7 +1168,6 @@
                 "type": "number"
               },
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -1215,6 +1226,38 @@
           "progress_pct"
         ],
         "title": "CampaignWeightOut",
+        "type": "object"
+      },
+      "CatalogMappingChoiceIn": {
+        "additionalProperties": false,
+        "description": "Lo que el panel manda cuando alguien resuelve una sugerencia de mapeo:\nlo que se le mostró y lo que de verdad eligió, aceptara la sugerencia,\nla cambiara, o buscara/creara el producto por su cuenta.",
+        "properties": {
+          "chosen_product_type_id": {
+            "format": "uuid",
+            "title": "Chosen Product Type Id",
+            "type": "string"
+          },
+          "free_text": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Free Text",
+            "type": "string"
+          },
+          "suggested_product_type_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "maxItems": 3,
+            "title": "Suggested Product Type Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "free_text",
+          "chosen_product_type_id"
+        ],
+        "title": "CatalogMappingChoiceIn",
         "type": "object"
       },
       "CategoryBreakdown": {
@@ -1730,6 +1773,17 @@
               }
             ],
             "title": "Tax Id"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
           }
         },
         "required": [
@@ -1846,6 +1900,17 @@
               }
             ],
             "title": "Tax Id"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
           }
         },
         "required": [
@@ -2028,6 +2093,17 @@
               }
             ],
             "title": "Tax Id"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
           }
         },
         "title": "CenterUpdate",
@@ -3467,6 +3543,21 @@
         "title": "OkOut",
         "type": "object"
       },
+      "PalletAddBoxIn": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "title": "Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "PalletAddBoxIn",
+        "type": "object"
+      },
       "PalletCloseIn": {
         "additionalProperties": false,
         "description": "Pesaje al cerrar. Todo opcional: una báscula descompuesta no puede\nimpedir que se cierre una tarima ya armada.",
@@ -3477,7 +3568,6 @@
                 "type": "number"
               },
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3533,7 +3623,6 @@
                 "type": "number"
               },
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3559,7 +3648,6 @@
           "boxes_weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3597,7 +3685,6 @@
           "gross_weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3652,7 +3739,6 @@
           "tare_weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3664,7 +3750,6 @@
           "weight_discrepancy_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3720,7 +3805,6 @@
           "gross_weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3775,7 +3859,6 @@
           "tare_weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -3921,6 +4004,51 @@
         "title": "PhotoUploadUrlOut",
         "type": "object"
       },
+      "ProductAliasCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "alias": {
+            "title": "Alias",
+            "type": "string"
+          }
+        },
+        "required": [
+          "alias"
+        ],
+        "title": "ProductAliasCreate",
+        "type": "object"
+      },
+      "ProductAliasOut": {
+        "additionalProperties": false,
+        "properties": {
+          "alias": {
+            "title": "Alias",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "alias",
+          "source",
+          "created_at"
+        ],
+        "title": "ProductAliasOut",
+        "type": "object"
+      },
       "ProductGtinOut": {
         "additionalProperties": false,
         "properties": {
@@ -4051,7 +4179,6 @@
                 "type": "number"
               },
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -4196,7 +4323,6 @@
           "unit_weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -4356,7 +4482,6 @@
                 "type": "number"
               },
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -4706,7 +4831,6 @@
           "weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -4815,7 +4939,6 @@
           "weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -4911,7 +5034,6 @@
           "total_weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -5163,7 +5285,6 @@
                 "type": "number"
               },
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               }
             ],
@@ -5186,7 +5307,6 @@
         "additionalProperties": false,
         "properties": {
           "gross_weight_kg": {
-            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
             "title": "Gross Weight Kg",
             "type": "string"
           },
@@ -5283,6 +5403,11 @@
           "shipped_boxes": {
             "title": "Shipped Boxes",
             "type": "integer"
+          },
+          "timezone": {
+            "default": "UTC",
+            "title": "Timezone",
+            "type": "string"
           },
           "total_boxes": {
             "title": "Total Boxes",
@@ -6628,6 +6753,36 @@
         "title": "ThreadReplyOut",
         "type": "object"
       },
+      "TimezoneOptions": {
+        "additionalProperties": false,
+        "description": "Zonas para elegir al dar de alta un centro, acotadas por país.",
+        "properties": {
+          "country_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country Code"
+          },
+          "timezones": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Timezones",
+            "type": "array"
+          }
+        },
+        "required": [
+          "country_code",
+          "timezones"
+        ],
+        "title": "TimezoneOptions",
+        "type": "object"
+      },
       "Token": {
         "additionalProperties": false,
         "properties": {
@@ -6803,6 +6958,17 @@
             "title": "From Center Id",
             "type": "string"
           },
+          "from_center_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Center Name"
+          },
           "id": {
             "format": "uuid",
             "title": "Id",
@@ -6839,6 +7005,17 @@
             "format": "uuid",
             "title": "To Center Id",
             "type": "string"
+          },
+          "to_center_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "To Center Name"
           },
           "updated_at": {
             "anyOf": [
@@ -6950,6 +7127,17 @@
             "title": "From Center Id",
             "type": "string"
           },
+          "from_center_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Center Name"
+          },
           "id": {
             "format": "uuid",
             "title": "Id",
@@ -6986,6 +7174,17 @@
             "format": "uuid",
             "title": "To Center Id",
             "type": "string"
+          },
+          "to_center_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "To Center Name"
           },
           "updated_at": {
             "anyOf": [
@@ -7565,7 +7764,6 @@
           "weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -7666,7 +7864,6 @@
           "weight_kg": {
             "anyOf": [
               {
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                 "type": "string"
               },
               {
@@ -9552,6 +9749,46 @@
         ]
       }
     },
+    "/v1/catalog/mapping-choices": {
+      "post": {
+        "description": "El panel llama esto cuando alguien resuelve una sugerencia de mapeo de\ntexto libre — la aceptó, la cambió, o buscó/creó el producto por su\ncuenta. Es la única forma de que exista un conjunto de evaluación con\ndatos reales (Fase 23, task 8) en vez de casos escritos a mano.",
+        "operationId": "record_mapping_choice_v1_catalog_mapping_choices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogMappingChoiceIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "summary": "Record Mapping Choice",
+        "tags": [
+          "catalog"
+        ]
+      }
+    },
     "/v1/catalog/rxnorm": {
       "get": {
         "description": "INN autocomplete via NLM RxNorm (no API key). Cached 1 h in Redis.",
@@ -9933,6 +10170,63 @@
           }
         ],
         "summary": "Create Center",
+        "tags": [
+          "centers"
+        ]
+      }
+    },
+    "/v1/centers/timezones": {
+      "get": {
+        "description": "Zonas IANA de un país (todas, sin país) para el formulario del centro.\n\nVa antes de `/{center_id}`: si no, la ruta la tomaría como un id.",
+        "operationId": "list_timezones_v1_centers_timezones_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "country_code",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 2,
+                  "minLength": 2,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Country Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TimezoneOptions"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "summary": "List Timezones",
         "tags": [
           "centers"
         ]
@@ -11333,6 +11627,103 @@
         ]
       }
     },
+    "/v1/intakes/read-label": {
+      "post": {
+        "description": "Lee la etiqueta de una foto tomada en el mostrador.\n\nExiste aparte de la que lee una foto del pre-registro porque ahí hay una\nfoto subida antes y aquí no: hay una cajita en la mano. La imagen no se\nguarda en ningún lado — llega, se lee y se descarta.\n\nLos campos vuelven como **sugerencia**: quien captura los confirma o los\ncorrige antes de sellar, y la caducidad sigue pasando por la validación de\nvida útil. Diccionario vacío si la capacidad está apagada, sin presupuesto o\nel proveedor no responde: se teclea como siempre.",
+        "operationId": "read_label_v1_intakes_read_label_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_read_label_v1_intakes_read_label_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Read Label V1 Intakes Read Label Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "summary": "Read Label",
+        "tags": [
+          "intakes"
+        ]
+      }
+    },
+    "/v1/intakes/{intake_id}": {
+      "get": {
+        "operationId": "get_intake_v1_intakes__intake_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "intake_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Intake Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntakeOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "summary": "Get Intake",
+        "tags": [
+          "intakes"
+        ]
+      }
+    },
     "/v1/messages": {
       "get": {
         "operationId": "list_threads_v1_messages_get",
@@ -11957,9 +12348,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "additionalProperties": true,
-                "title": "Body",
-                "type": "object"
+                "$ref": "#/components/schemas/PalletAddBoxIn"
               }
             }
           },
@@ -12538,6 +12927,168 @@
           }
         ],
         "summary": "Update Product Type",
+        "tags": [
+          "product-types"
+        ]
+      }
+    },
+    "/v1/product-types/{pt_id}/aliases": {
+      "get": {
+        "description": "Otros nombres por los que la gente pide este producto.",
+        "operationId": "list_product_aliases_v1_product_types__pt_id__aliases_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pt_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Pt Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProductAliasOut"
+                  },
+                  "title": "Response List Product Aliases V1 Product Types  Pt Id  Aliases Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "summary": "List Product Aliases",
+        "tags": [
+          "product-types"
+        ]
+      },
+      "post": {
+        "description": "Agrega un alias. Solo administración nacional: el catálogo es global.",
+        "operationId": "add_product_alias_v1_product_types__pt_id__aliases_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pt_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Pt Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductAliasCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductAliasOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "summary": "Add Product Alias",
+        "tags": [
+          "product-types"
+        ]
+      }
+    },
+    "/v1/product-types/{pt_id}/aliases/{alias_id}": {
+      "delete": {
+        "description": "Quita un alias, incluidos los sembrados: uno equivocado arrastra al\nproducto equivocado en cada captura.",
+        "operationId": "remove_product_alias_v1_product_types__pt_id__aliases__alias_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pt_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Pt Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "alias_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Alias Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "summary": "Remove Product Alias",
         "tags": [
           "product-types"
         ]
@@ -13543,6 +14094,22 @@
                 }
               ],
               "title": "End"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
             }
           }
         ],

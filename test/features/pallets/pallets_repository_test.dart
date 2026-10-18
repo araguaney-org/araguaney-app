@@ -13,8 +13,8 @@ void main() {
       PalletsRepository(PalletsApi(fakeDio(adapter)));
 
   test('adding a box sends the code under the key the backend reads', () async {
-    // The contract declares that body untyped, so the key was written by hand
-    // and this test is what stops it drifting out of sync in silence.
+    // The key now comes from the contract's `PalletAddBoxIn`; this pins what
+    // actually goes over the wire, which is what the backend's router reads.
     final adapter = FakeHttpAdapter(
       (_) => FakeResponse(200, palletDetailJson()),
     );
