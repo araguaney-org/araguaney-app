@@ -140,5 +140,5 @@ locks anybody out». It was written before the code was correct, and it failed.
 | 5 | «Actualizar» or «Más tarde», at launch | The screen, shown only when the application opens, remembered per version, with silence starting at five days and tightening to one. | 🟠 Medium | ✅ Done |
 | 6 | The installed version, at the foot | `Versión 1.0.0 (3)` on the sign-in screen and on the wall, with the build number, so asking «what version do you have» stops costing a conversation. | 🟢 Low | ✅ Done |
 | 7 | Say where the values are set | Not a backend request: two environment variables, raised by whoever publishes a version. Written into the release checklist. | 🟢 Low | ✅ Done |
-| 8 | Raise `LATEST_CLIENT_VERSION` | Once a build is downloadable rather than merely uploaded. Belongs to a release, not to this phase. | 🟢 Low | ⬜ Pending |
+| 8 | Raise `LATEST_CLIENT_VERSION` | Once a build is downloadable rather than merely uploaded; the next one is `1.2.0`. Belongs to a release, not to this phase. | 🟢 Low | ⬜ Pending |
 | 9 | Verify on a device | With a build deliberately declared below the minimum, once the backend publishes real values. | 🟢 Low | ⬜ Pending |

@@ -47,7 +47,7 @@ phase's task 4.
 |---|---|---|---|---|
 | 1 | Point the QR base at the canonical host | Set the `WEB_BASE_URL` repository variable to `https://www.araguaney.org`. Done 2026-10-05, after finding the variable still at `.lat` while the backend's `FRONTEND_URL` already led with `.org`. Only builds made from now on draw the new QR; binaries already installed keep `.lat` until they update. Both hosts resolve, so the mismatch was wrong but not broken. | 🟠 Media | ✅ Done |
 | 2 | Pin the QR host in release builds | The existing test checks the format (`{base}/b/{code}`) but compares against whatever base was configured, so it passes on any host. A new test pins the canonical host when the build defines `WEB_BASE_URL`, and skips otherwise. CI passes the repository variable to that one file, so a release with the old host fails before it is built. Verified red against `https://araguaney.lat` and green against `https://www.araguaney.org`. | 🟢 Baja | ✅ Done |
-| 3 | Switch the API base URL | Set the `API_BASE_URL` repository variable to `https://api.araguaney.org` and build a release. Verify on a real device: login, a catalogue read, and an offline intake draining its queue. Checked 2026-10-18 from outside: both hosts serve the same contract, and a request with Dart's user agent reaches the API on `.org` as it does on `.lat`, so Cloudflare does not stand in the way. The variable is set by somebody with admin access to the repository. | 🟠 Media | ⬜ Pending |
+| 3 | Switch the API base URL | Set the `API_BASE_URL` repository variable to `https://api.araguaney.org` and build a release. Verify on a real device: login, a catalogue read, and an offline intake draining its queue. Checked 2026-10-18 from outside: both hosts serve the same contract, and a request with Dart's user agent reaches the API on `.org` as it does on `.lat`, so Cloudflare does not stand in the way. The variable was switched on 2026-10-18 and the release is `1.2.0+5`; what is left is the pass on a phone. The name moved from `1.1.0` on purpose: the version gate compares names, so task 4 can only retire the `.lat` binaries if the new build carries a higher one. | 🟠 Media | ⬜ Pending |
 | 4 | Publish the gate target | Once the build from task 3 is downloadable, ask the backend to raise `MIN_SUPPORTED_CLIENT_VERSION` so older binaries are asked to update. Coordinate with the backend's Phase 29 task 18; do not raise it before the binary exists. | 🟢 Baja | ⬜ Pending |
 | 5 | Update the repository's public addresses | `SECURITY.md` (`security@araguaney.org`, the address the backend's policy already publishes), `docs/release/android.md` (both variables), `docs/release/store-listing.md` (privacy policy and the donation link in the full description). The links to the backend repository already point at `araguaney-org`. Done 2026-10-18. | 🟢 Baja | ✅ Done |
 | 6 | Update the store listing | Play Console: website, contact address and privacy policy URL (`https://www.araguaney.org/aviso-de-privacidad`) on the canonical host, and the full description, whose donation link now reads `araguaney.org` in `store-listing.md`. Manual step in the console; record it here when done. | 🟢 Baja | ⬜ Pending |
@@ -55,10 +55,11 @@ phase's task 4.
 
 ## Suggested order
 
-1. Tasks 1 and 2 are done. Task 3 next: its device verification is the only
-   thing left in this phase that needs a phone.
-3. Task 4 only after the build from task 3 is out.
-4. Tasks 5 to 7 in any order; they do not block anything.
+1. Tasks 1, 2 and 5 are done, and the variable of task 3 is switched. Task 3's
+   device verification is the only thing left in this phase that needs a phone.
+2. Task 4 only after the build from task 3 is downloadable, and it raises the
+   minimum to `1.2.0`, the first name that talks to `.org`.
+3. Tasks 6 and 7 in any order; they do not block anything.
 
 ## Open question
 
