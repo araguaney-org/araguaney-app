@@ -61,7 +61,7 @@ stays partial on request 12.
 | 5 | Open the capture from a risk review | The notice still lands on the review, which is where the reason is read; each review now opens its capture in one tap. The capture's record asks `GET /v1/intakes/{id}`, which carries the boxes (checked in the backend's `IntakeService.get`), so the «the history does not carry the boxes» note shows only when that question fails. | 🟠 Medium | ✅ Done |
 | 6 | Stock on hand by category | **No change needed.** Request 1 was closed in August without this filter: the stock screen already counts sealed boxes from the national dashboard route, and the campaign report's by-category section is a capture report on purpose. The filter stays available for a screen that wants it. | 🟢 Low | ✅ Done |
 | 7 | Close the requests | Mark requests 2, 3, 4 and 7 resolved in `backend-requests.md` and request 6 partly resolved; update the parity count. | 🟢 Low | ✅ Done |
-| 8 | Verify on a device | Restore a session as a national administrator and as a coordinator, follow a risk review notice to its capture, and read a transfer from both centres. | 🟢 Low | ⬜ Pending |
+| 8 | Verify on a device | On build `1.2.0+5`, restore a session as a national administrator and as a coordinator, follow a risk review notice to its capture, and read a transfer from both centres. | 🟢 Low | ⬜ Pending |
 
 ## Suggested order
 
