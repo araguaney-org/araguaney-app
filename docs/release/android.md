@@ -92,8 +92,8 @@ credential and must never leave the secret store.
 
 | Variable | Value |
 |---|---|
-| `API_BASE_URL` | `https://api.araguaney.lat` |
-| `WEB_BASE_URL` | `https://araguaney.lat` |
+| `API_BASE_URL` | `https://api.araguaney.org` |
+| `WEB_BASE_URL` | `https://www.araguaney.org` |
 
 These are variables rather than secrets on purpose: they are public addresses,
 and seeing them in a build log is what makes a misconfigured build diagnosable.
